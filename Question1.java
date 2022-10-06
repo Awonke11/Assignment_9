@@ -58,12 +58,14 @@ public class Question1 {
                         int serialNumber = input.nextInt();
                         input.nextLine();
                         for (Accessory item : accessoryList) {
-                            if (!item.containsSerialNumber(serialNumber)) {
-                                System.out.println("Done");
-                                break;
-                            } else {
-                                System.out.println("Not found");
-                                break;
+                            if (item != null) {
+                                if (item.containsSerialNumber(serialNumber)) {
+                                    System.out.println("Done");
+                                    break;
+                                } else {
+                                    System.out.println("Not found");
+                                    break;
+                                }
                             }
                         }
                         for (int i = 0; i < accessoryList.length; i++) { // & Deleting the object with the given serial
