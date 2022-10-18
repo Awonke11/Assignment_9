@@ -1,10 +1,15 @@
-public class HLine {
-    public int id, x, y, len;
+public class HLine extends VectorObject {
+    public int len;
 
     public HLine(int id, int x, int y, int len) {
-        this.id = id;
-        this.x = x;
-        this.y = y;
+        super(id, x, y);
         this.len = len;
+    }
+
+    @Override
+    public void draw(char[][] matrix) {
+        for (int i = x; i < this.len + x; i++) {
+            matrix[y][i] = '*';
+        }
     }
 }

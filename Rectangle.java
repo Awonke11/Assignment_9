@@ -1,11 +1,18 @@
-public class Rectangle {
-    public int id, x, y, width, height;
+public class Rectangle extends VectorObject {
+    public int width, height;
 
     public Rectangle(int id, int x, int y, int width, int height) {
-        this.id = id;
-        this.x = x;
-        this.y = y;
+        super(id, x, y);
         this.width = width;
         this.height = height;
+    }
+
+    @Override
+    public void draw(char[][] matrix) {
+        for (int i = x; i < this.width + x; i++) {
+            for (int j = y; j < this.height + y; j++) {
+                matrix[i][j] = '*';
+            }
+        }
     }
 }

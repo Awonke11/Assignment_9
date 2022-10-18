@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 /*
  * A program that stores information about a product
@@ -10,12 +11,12 @@ import java.util.Scanner;
 public class Question1 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        Accessory[] accessoryList = new Accessory[50]; // & Stores all the Accessory objects
+        ArrayList<ParentQuestion1> accessoryList = new ArrayList<ParentQuestion1>(); // & Stores all the Accessory
+                                                                                     // objects
 
         System.out.println("Welcome to Great International Technology");
         String userInput; // & Stores the user input
-        Accessory accessory = null;
-        int listIndex = 0;
+        ParentQuestion1 accessory;
         do {
             System.out.println("MENU: add (B)ox, add (S)creen, add (A)ccessories, (D)elete, (L)ist, (Q)uit");
             userInput = input.nextLine();
@@ -35,6 +36,7 @@ public class Question1 {
                             int amountOfMemory = input.nextInt();
                             input.nextLine();
                             accessory = new Box(serialNumber, manufacturer, colour, amountOfMemory);
+                            accessoryList.add(accessory);
                             break;
 
                         case "s":
@@ -42,10 +44,12 @@ public class Question1 {
                             int size = input.nextInt();
                             input.nextLine();
                             accessory = new Screen(serialNumber, manufacturer, colour, size);
+                            accessoryList.add(accessory);
                             break;
 
                         case "a":
                             accessory = new Accessory(serialNumber, manufacturer, colour);
+                            accessoryList.add(accessory);
                             break;
 
                     }
@@ -53,44 +57,34 @@ public class Question1 {
                 }
                 switch (userInput) {
                     case "d":
-                        Accessory[] newAccessoryList = new Accessory[accessoryList.length];
                         System.out.println("Enter the serial number");
                         int serialNumber = input.nextInt();
                         input.nextLine();
-                        for (Accessory item : accessoryList) {
-                            if (item != null) {
-                                if (item.containsSerialNumber(serialNumber)) {
-                                    System.out.println("Done");
-                                    break;
-                                } else {
-                                    System.out.println("Not found");
-                                    break;
-                                }
-                            }
-                        }
-                        for (int i = 0; i < accessoryList.length; i++) { // & Deleting the object with the given serial
+
+                        boolean deleted = false;
+                        for (int i = 0; i < accessoryList.size(); i++) { // & Deleting the object with the given serial
                                                                          // & number
-                            if (accessoryList[i] != null) {
-                                if (!accessoryList[i].containsSerialNumber(serialNumber)) {
-                                    newAccessoryList[i] = accessoryList[i];
-                                }
+                            if (!accessoryList.get(i).containsSerialNumber(serialNumber)) {
+                                accessoryList.remove(i);
+                                deleted = true;
                             }
                         }
-                        accessoryList = newAccessoryList;
+
+                        if (!deleted) {
+                            System.out.println("Not found");
+                        } else {
+                            System.out.println("Done");
+                        }
                         break;
                     case "l":
-                        for (Accessory item : accessoryList) {
-                            if (item != null) {
-                                System.out.println(item);
-                            }
+                        for (ParentQuestion1 a : accessoryList) {
+                            System.out.println(a.toString());
                         }
+
                         System.out.println("Done");
                         break;
                 }
             }
-
-            accessoryList[listIndex] = accessory;
-            listIndex++;
 
         } while (!userInput.equals("q"));
 

@@ -5,7 +5,7 @@
  * Student number: MNTAWO002
  */
 
-public class Box extends Accessory {
+public class Box extends ParentQuestion1 {
     public int amountOfMemory;
 
     public Box(int serialNumber, String manufacturer, String colour, int amountOfMemory) {
