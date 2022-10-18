@@ -23,10 +23,10 @@ public class Question1 {
             if (!userInput.equals("q")) {
                 if (!userInput.equals("d") && !userInput.equals("l")) {
                     System.out.println("Enter the serial number");
-                    int serialNumber = input.nextInt();
+                    String serialNumber = input.nextLine();
                     System.out.println("Enter the manufacturer");
-                    input.nextLine();
                     String manufacturer = input.nextLine();
+                    // input.nextLine();
                     System.out.println("Enter the colour");
                     String colour = input.nextLine();
 
@@ -58,13 +58,13 @@ public class Question1 {
                 switch (userInput) {
                     case "d":
                         System.out.println("Enter the serial number");
-                        int serialNumber = input.nextInt();
+                        String serialNumber = input.nextLine();
                         input.nextLine();
 
                         boolean deleted = false;
                         for (int i = 0; i < accessoryList.size(); i++) { // & Deleting the object with the given serial
                                                                          // & number
-                            if (!accessoryList.get(i).containsSerialNumber(serialNumber)) {
+                            if (!accessoryList.get(i).containSerialNumber(serialNumber)) {
                                 accessoryList.remove(i);
                                 deleted = true;
                             }

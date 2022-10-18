@@ -1,8 +1,7 @@
 public class ParentQuestion1 {
-    public int serialNumber;
-    public String manufacturer, colour;
+    public String serialNumber, manufacturer, colour;
 
-    public ParentQuestion1(int serialNumber, String manufacturer, String colour) {
+    public ParentQuestion1(String serialNumber, String manufacturer, String colour) {
         this.serialNumber = serialNumber;
         this.manufacturer = manufacturer;
         this.colour = colour;
@@ -10,7 +9,11 @@ public class ParentQuestion1 {
 
     // & Checks whether the Accessory serialNumber is equal to the given serial
     // & number
-    public boolean containsSerialNumber(int serialNum) {
-        return (serialNumber == serialNum);
+    public boolean containSerialNumber(String serialNum) {
+        return (serialNumber.equals(serialNum));
+    }
+
+    public String toString() {
+        return String.format("%s, %s, %s", this.serialNumber, this.manufacturer, this.colour);
     }
 }

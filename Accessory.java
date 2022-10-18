@@ -7,11 +7,12 @@
 
 public class Accessory extends ParentQuestion1 {
 
-    public Accessory(int serialNumber, String manufacturer, String colour) {
+    public Accessory(String serialNumber, String manufacturer, String colour) {
         super(serialNumber, manufacturer, colour);
     }
 
+    @Override
     public String toString() {
-        return String.format("Accessories: %d, %s, %s", serialNumber, manufacturer, colour);
+        return String.format("Accessories: %s, %s, %s", serialNumber, manufacturer, colour);
     }
 }
